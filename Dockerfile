@@ -9,4 +9,6 @@ COPY . .
 
 EXPOSE 7860
 
-CMD ["python", "app_flask.py"]
+ENV PORT=7860
+
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--timeout", "300", "--workers", "1", "app_flask:app"]
